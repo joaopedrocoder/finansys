@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './category-list.component.scss'
 })
 export class CategoryListComponent {
+  
 
+  deleteCategory(id: number): void {}
 }

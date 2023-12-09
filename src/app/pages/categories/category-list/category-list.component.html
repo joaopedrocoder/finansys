@@ -1,1 +1,70 @@
-<p>category-list works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+           Categorias
+        </li>
+    </ol>
+</nav>
+<div class="row justify-content-between mb-4">
+    <div class="col-md">
+        <h1 class="h2 border-start border-3 ps-2">Categorias</h1>
+    </div>
+    <div class="col-md">
+        <button routerLink="new" class="btn btn-success btn-sm float-end">+ Nova Categoria</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead class="table-primary">
+            <tr class="text-light">
+                <th class="" scope="col">Categorias</th>
+                <th class="" scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>Lazer</strong><br>
+                    <small>uma categoria de lazer</small>
+                </td>
+                <td>
+                    <button 
+                        class="btn btn-outline-danger me-2 btn-sm"
+                        (click)="deleteCategory(2)"
+                    >
+                        remover
+                    </button>
+                    <button 
+                        class="btn  btn-outline-info btn-sm"
+                        [routerLink]="[12, 'edit']"
+                    >
+                        editar
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Lazer</strong><br>
+                    <small>uma categoria de lazer</small>
+                </td>
+                <td>
+                    <button 
+                        class="btn btn-outline-danger me-2 btn-sm"
+                        (click)="deleteCategory(2)"
+                    >
+                        remover
+                    </button>
+                    <button 
+                        class="btn  btn-outline-info btn-sm"
+                        [routerLink]="[12, 'edit']"
+                    >
+                        editar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
