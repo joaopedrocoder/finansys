@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class CategoryListComponent {
   
 
-  deleteCategory(id: number): void {}
+  deleteCategory(id: number): void {
+    console.log(id)
+  }
 }
