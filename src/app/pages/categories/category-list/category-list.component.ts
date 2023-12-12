@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../services/category.service';
+import { Category } from '../models/category.model';
 
 @Component({
   selector: 'app-category-list',
@@ -7,7 +8,7 @@ import { CategoryService } from '../services/category.service';
   styleUrl: './category-list.component.scss'
 })
 export class CategoryListComponent {
-  
+  categories: Category[] = []
   constructor(private categoryService: CategoryService) {} 
 
   ngOnInit(): void {
@@ -16,12 +17,19 @@ export class CategoryListComponent {
 
   listCategories() {
     this.categoryService.getAll().subscribe({
-      next: response => console.log(response),
+      next: response => this.categories = response,
       error: err => console.log(err) 
     })
   }
 
   deleteCategory(id: number): void {
-    console.log(id)
+    const mustDelete = confirm('Deseja realmente excluir este item?')
+
+    if(mustDelete)
+    this.categoryService.delete(id).
+      subscribe({
+        next: response => this.categories = this.categories.filter(category => category.id !== id),
+        error: err => console.log(err)
+      })
   }
 }

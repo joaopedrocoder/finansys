@@ -10,25 +10,20 @@ export class CategoryService {
   private baseUrl = 'api/categories'
 
   constructor(private http: HttpClient) { }
-
+  
   getAll(): Observable<Category[]> {
-    return this.http.get(this.baseUrl).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataCategories)
-    )
+    return this.http.get<Category[]>(this.baseUrl)
   }
 
   getById(id: number): Observable<Category>{
-    return this.http.get(`${this.baseUrl}/${id}`).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataCategory)
+    return this.http.get<Category>(`${this.baseUrl}/${id}`).pipe(
+      catchError(this.handleError)
     )
   }
 
   create(category: Category): Observable<Category> {
-    return this.http.post(this.baseUrl, category).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataCategory)
+    return this.http.post<Category>(this.baseUrl, category).pipe(
+      catchError(this.handleError)
     )
   }
 
@@ -40,22 +35,21 @@ export class CategoryService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`).pipe(
-      catchError(this.handleError),
-      map(() => null)
+    return this.http.delete<any>(`${this.baseUrl}/${id}`).pipe(
+      catchError(this.handleError)
     )
   }
 
-  private jsonDataCategories(jsonData: any[]): Category[] {
-    const categories: Category[] = []
-    jsonData.forEach(element => categories.push(element as Category))
+  // private jsonDataCategories(jsonData: any[]): Category[] {
+  //   const categories: Category[] = []
+  //   jsonData.forEach(element => categories.push(element as Category))
     
-    return categories
-  }
+  //   return categories
+  // }
 
-  private jsonDataCategory(jsonData: any): Category {
-    return jsonData as Category
-  }
+  // private jsonDataCategory(jsonData: any): Category {
+  //   return jsonData as Category
+  // }
 
   private handleError(error: any): Observable<any> {
     console.log('Erro na requisição: ', error)
