@@ -1,3 +1,4 @@
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -25,43 +26,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let category of categories">
                 <td>
-                    <strong>Lazer</strong><br>
-                    <small>uma categoria de lazer</small>
+                    <strong>{{category.name}}</strong><br>
+                    <small>{{category.description}}</small>
                 </td>
                 <td>
                     <button 
-                        class="btn btn-outline-danger me-2 btn-sm"
-                        (click)="deleteCategory(2)"
-                    >
-                        remover
-                    </button>
-                    <button 
-                        class="btn  btn-outline-info btn-sm"
-                        [routerLink]="[12, 'edit']"
+                        class="btn  btn-outline-info btn-sm me-2"
+                        [routerLink]="[category.id, 'edit']"
                     >
                         editar
                     </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>Lazer</strong><br>
-                    <small>uma categoria de lazer</small>
-                </td>
-                <td>
                     <button 
-                        class="btn btn-outline-danger me-2 btn-sm"
-                        (click)="deleteCategory(2)"
+                        class="btn btn-outline-danger btn-sm"
+                        (click)="deleteCategory(category.id)"
                     >
                         remover
-                    </button>
-                    <button 
-                        class="btn  btn-outline-info btn-sm"
-                        [routerLink]="[12, 'edit']"
-                    >
-                        editar
                     </button>
                 </td>
             </tr>
