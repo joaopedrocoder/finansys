@@ -27,8 +27,8 @@ export class CategoryService {
       .pipe(catchError(this.handleError));
   }
 
-  update(category: Category, id: number): Observable<Category> {
-    return this.http.post(`${this.baseUrl}/${id}`, category).pipe(
+  update(category: Category): Observable<Category> {
+    return this.http.post(`${this.baseUrl}/${category.id}`, category).pipe(
       catchError(this.handleError),
       map(() => category)
     );
