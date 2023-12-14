@@ -9,6 +9,7 @@ import { Category } from '../models/category.model';
 })
 export class CategoryListComponent {
   categories: Category[] = [];
+  
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
