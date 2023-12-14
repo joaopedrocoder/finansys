@@ -14,7 +14,7 @@ export class Entry {
     public amount?: string,
     public date?: string,
     public paid?: boolean,
-    public categoyId?: number,
+    public categoryId?: number,
     public category?: Category 
   ){}
 

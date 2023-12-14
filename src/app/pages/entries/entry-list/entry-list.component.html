@@ -1,0 +1,61 @@
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a routerLink="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Lançamentos
+      </li>
+  </ol>
+</nav>
+<div class="row justify-content-between mb-4">
+  <div class="col-md">
+      <h1 class="h2 border-start border-3 ps-2">Lançamentos</h1>
+  </div>
+  <div class="col-md">
+      <button routerLink="new" class="btn btn-success btn-sm float-end">+ Novo lançamento</button>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped align-middle" aria-describedby="category table">
+      <thead class="table-primary">
+          <tr class="text-light">
+              <th class="" scope="col">Lançamento</th>
+              <th class="" scope="col">Categoria</th>
+              <th class="text-end" scope="col">Valor R$</th>
+              <th class="text-center" scope="col">Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let entry of entries">
+              <td>
+                  <strong>{{entry?.name}}</strong><br>
+                  <small>{{entry?.date}}</small><br>
+                  <small *ngIf="entry.description">{{entry?.description}}</small>
+              </td>
+              <td>{{entry.category?.name}}</td>
+              <td class="text-end" [ngClass]="entry.type === 'expense' ? 'text-danger':'text-success'">
+                <strong>{{entry.type === 'expense' ? '-'+entry.amount:'+'+entry.amount}}</strong><br>
+                <span class="badge badge-light" style="color: #222;">
+                  {{entry.paid ? 'Pago':'Pendente'}}
+                </span>
+              </td>
+              <td class="text-center">
+                  <button 
+                      class="btn  btn-outline-info btn-sm me-2"
+                      [routerLink]="[entry.id, 'edit']"
+                  >
+                      editar
+                  </button>
+                  <button 
+                      class="btn btn-outline-danger btn-sm"
+                      (click)="deleteEntry(entry?.id)"
+                  >
+                      remover
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
