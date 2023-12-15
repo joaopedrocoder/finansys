@@ -31,7 +31,6 @@ export class EntriesService {
     return this.http.delete<any>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
   }
 
-
   private handleError(error: any): Observable<any> {
     console.log('Erro na requisição: ', error);
     const err = new Error('test');

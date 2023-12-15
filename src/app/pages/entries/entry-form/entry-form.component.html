@@ -1,0 +1,196 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+      <a routerLink="/entries">Lançamentos</a>
+    </li>
+    <li class="breadcrumb-item active">{{pageTitle}}</li>
+  </ol>
+</nav>
+<div class="row justify-content-between mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-start border-3 ps-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md">
+    <button routerLink="/entries" class="btn btn-success btn-sm float-end">
+      << Voltar
+    </button>
+  </div>
+</div>
+<form [formGroup]="entryForm" (submit)="submitForm()">
+  <div class="card">
+    <div class="card-header">Informações sobre o lançamento</div>
+
+    <div class="card-body">
+      <div class="row gy-3 ">
+        <div class="form-group col-md-3">
+          <label for="type" class="form-label">Tipo</label>
+          <select name="type" id="type" class="form-select" formControlName="type">
+            <option 
+              *ngFor="let option of typeOptions" 
+              [value]="option.value"
+            >
+              {{option.text}}
+            </option>
+          </select>
+        </div>
+        
+        <div class="form-group col-md-4">
+          <label for="name" class="form-label">Lançamento</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="name"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              entryForm.get('name')?.invalid &&
+              entryForm.get('name')?.touched
+            "
+          >
+            <div *ngIf="entryForm.get('name')?.errors?.['required']">
+              <small>Dado obrigatório!</small>
+            </div>
+            <div *ngIf="entryForm.get('name')?.errors?.['minLength']">
+              <small>Deve ter no min 2 caracteres</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="amount" class="form-label">Valor</label>
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">R$</span>
+            <input
+              type="text"
+              class="form-control text-end"
+              id="amount"
+              formControlName="amount"
+              [imask]="iMaskConfig"
+            />
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="
+              entryForm.get('amount')?.invalid &&
+              entryForm.get('amount')?.touched
+            "
+          >
+            <div *ngIf="entryForm.get('amount')?.errors?.['required']">
+              <small>Dado obrigatório!</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-2">
+          <label for="date" style="margin-bottom: 8px;">Data</label>
+          <p-calendar
+            id="date"
+            formControlName="date"
+            inputStyleClass="form-control"
+            dataType="string"
+            dateFormat="dd/mm/yy"
+            [showButtonBar]="true"
+          >
+          </p-calendar>
+          <div
+            class="text-danger"
+            *ngIf="
+              entryForm.get('date')?.invalid &&
+              entryForm.get('date')?.touched
+            "
+          >
+            <div *ngIf="entryForm.get('date')?.errors?.['required']">
+              <small>Dado obrigatório!</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label>Pago</label><br>
+          <div class="form-check">
+            <input 
+              class="form-check-input" 
+              type="radio" 
+              name="paid"
+              id="pago"
+              formControlName="paid"
+              [value]="true"
+              checked
+            >
+            <label class="form-check-label" for="pago">
+              Pago
+            </label>
+          </div>
+          <div class="form-check">
+            <input 
+              class="form-check-input" 
+              type="radio" 
+              name="paid"
+              id="pendente"
+              formControlName="paid"
+              [value]="false"
+            >
+            <label class="form-check-label" for="pendente">
+              Pendente
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="categoryId" class="form-label">Categoria</label>
+          <select name="categoryName" id="categoryId" class="form-select" formControlName="categoryId">
+            <option [value]="null" selected disabled>Selecione uma categoria</option>
+            <option 
+              *ngFor="let category of categories" 
+              [value]="category.id"
+            >
+              {{category.name}}
+            </option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              entryForm.get('categoryId')?.invalid &&
+              entryForm.get('categoryId')?.touched
+            "
+          >
+            <div *ngIf="entryForm.get('categoryId')?.errors?.['required']">
+              <small>Dado obrigatório!</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-7">
+          <label for="description" class="form-label">Descrição</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            formControlName="description"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-danger mt-4" *ngIf="serverErrorMessage.length > 0">
+    <strong>Erro no servidor</strong>
+    <ul>
+      <li *ngFor="let error of serverErrorMessage">{{error}}</li>
+    </ul>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary btn-md float-end mt-3"
+    [disabled]="submittingForm || entryForm.invalid"
+  >
+    Salvar
+  </button>
+</form>
+
+<pre>{{entryForm.value | json}}</pre>
+
