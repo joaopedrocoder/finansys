@@ -157,7 +157,7 @@ export class EntryFormComponent {
     this.entryService.update(newEntry)
       .subscribe({
         next: response => {
-          if(Object.entries(response).length > 0) {
+          if(response === null) {
             this.toastr.success('Solicitação realizada com sucesso!')
           }
         },
