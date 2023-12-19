@@ -70,7 +70,7 @@ export class EntryFormComponent {
     this.setCurrentAction();
     this.buildEntryForm()
     this.loadEntry()
-    this.loadcategories()
+    this.loadCategories()
   }
 
   //Ação é executada depois que toda a pagina
@@ -133,7 +133,7 @@ export class EntryFormComponent {
     }
   }
 
-  private loadcategories(): void {
+  private loadCategories(): void {
     this.categoryService.getAll().subscribe({
       next: response => this.categories = response,
       error: (err: any) => console.log(err)
