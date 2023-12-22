@@ -1,29 +1,24 @@
 import { CategoryService } from './../../categories/services/category.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Entry } from '../models/entry.model';
+import { BaseResourceService } from '../../../shared/services/base-resource.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EntriesService {
-  private baseUrl = 'api/entries'
+export class EntriesService extends BaseResourceService<Entry> {
+  protected url = 'api/entries'
   
   constructor(
-    private http: HttpClient,
-    private categoryService: CategoryService
-  ) { }
-
-  getAll(): Observable<Entry[]> {
-    return this.http.get<Entry[]>(this.baseUrl)
+    private categoryService: CategoryService,
+    protected override injector: Injector
+  ) {
+    super(injector, 'api/entries');
   }
 
-  getById(id: number): Observable<Entry> {
-    return this.http.get<Entry>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
-  }
-
-  create(entry: Entry): Observable<Entry> {
+  override create(entry: Entry): Observable<Entry> {
     if(entry.categoryId) {
       this.categoryService.getById(entry.categoryId).subscribe({
         next: response => entry.category = response,
@@ -31,29 +26,19 @@ export class EntriesService {
       })
     }
 
-    return this.http.post<Entry>(this.baseUrl, entry).pipe(catchError(this.handleError))
+    // return this.http.post<Entry>(this.baseUrl, entry).pipe(catchError(this.handleError))
+    return super.create(entry)
   }
 
-  update(entry: Entry): Observable<Entry> {
+  override update(entry: Entry): Observable<Entry> {
     if(entry.categoryId) {
       this.categoryService.getById(entry.categoryId).subscribe({
         next: response => entry.category = response,
         error: err => console.log(err)
       })
     }
-
-    console.log(entry)
-    return this.http.put<Entry>(`${this.baseUrl}/${entry?.id}`, entry).pipe(catchError(this.handleError))
-  }
-  
-  delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
-  }
-
-  private handleError(error: any): Observable<any> {
-    console.log('Erro na requisição: ', error);
-    const err = new Error('test');
-    return throwError(() => err);
+    // return this.http.put<Entry>(`${this.baseUrl}/${entry?.id}`, entry).pipe(catchError(this.handleError))
+    return super.update(entry)
   }
   
 }
