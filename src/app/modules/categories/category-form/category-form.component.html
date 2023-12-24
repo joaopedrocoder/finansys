@@ -19,7 +19,7 @@
     </button>
   </div>
 </div>
-<form [formGroup]="categoryForm" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">Informações sobre a categoria</div>
 
@@ -36,14 +36,14 @@
           <div
             class="text-danger"
             *ngIf="
-              categoryForm.get('name')?.invalid &&
-              categoryForm.get('name')?.touched
+              resourceForm.get('name')?.invalid &&
+              resourceForm.get('name')?.touched
             "
           >
-            <div *ngIf="categoryForm.get('name')?.errors?.['required']">
-              <small>Dado obrigatório!{{categoryForm.get('name')?.errors?.['minLength']}}</small>
+            <div *ngIf="resourceForm.get('name')?.errors?.['required']">
+              <small>Dado obrigatório!{{resourceForm.get('name')?.errors?.['minLength']}}</small>
             </div>
-            <div *ngIf="categoryForm.get('name')?.errors?.['minLength']">
+            <div *ngIf="resourceForm.get('name')?.errors?.['minLength']">
               <small>Deve ter no min 2 caracteres</small>
             </div>
           </div>
@@ -72,7 +72,7 @@
   <button
     type="submit"
     class="btn btn-primary btn-md float-end mt-3"
-    [disabled]="submittingForm || categoryForm.invalid"
+    [disabled]="submittingForm || resourceForm.invalid"
   >
     Salvar
   </button>
