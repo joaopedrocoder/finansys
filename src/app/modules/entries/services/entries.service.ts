@@ -1,6 +1,5 @@
 import { CategoryService } from './../../categories/services/category.service';
-import { Observable, catchError, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable, Injector } from '@angular/core';
 import { Entry } from '../models/entry.model';
 import { BaseResourceService } from '../../../shared/services/base-resource.service';
@@ -26,7 +25,6 @@ export class EntriesService extends BaseResourceService<Entry> {
       })
     }
 
-    // return this.http.post<Entry>(this.baseUrl, entry).pipe(catchError(this.handleError))
     return super.create(entry)
   }
 
@@ -37,7 +35,7 @@ export class EntriesService extends BaseResourceService<Entry> {
         error: err => console.log(err)
       })
     }
-    // return this.http.put<Entry>(`${this.baseUrl}/${entry?.id}`, entry).pipe(catchError(this.handleError))
+    
     return super.update(entry)
   }
   

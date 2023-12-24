@@ -23,10 +23,10 @@ export class CategoryListComponent {
     });
   }
 
-  deleteCategory(id: number): void {
+  deleteCategory(id?: number): void {
     const mustDelete = confirm('Deseja realmente excluir este item?');
 
-    if (mustDelete)
+    if (mustDelete && id)
       this.categoryService.delete(id).subscribe({
         next: (response) =>
           (this.categories = this.categories.filter(
@@ -35,4 +35,5 @@ export class CategoryListComponent {
         error: (err) => console.log(err),
       });
   }
+  
 }
