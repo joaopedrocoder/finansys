@@ -8,6 +8,7 @@ import { EntryFormComponent } from './entry-form/entry-form.component';
 import { IMaskModule } from 'angular-imask';
 import { CalendarModule } from 'primeng/calendar';
 import { SharedModule } from '../../shared/shared.module';
+import { CoreModule } from '../../core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from '../../shared/shared.module';
     EntriesRoutingModule,
     IMaskModule,
     CalendarModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class EntriesModule { }

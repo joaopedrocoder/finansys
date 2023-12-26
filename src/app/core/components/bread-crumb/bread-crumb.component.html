@@ -1,0 +1,13 @@
+<nav id="bread-crumb-container" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a routerLink="/">Home</a>
+      </li>
+      <li *ngFor="let item of items; let i = index" class="breadcrumb-item" [class.active]="i === items.length -1">
+        <span *ngIf="i === items.length -1" >{{item.text}}</span>
+        <a *ngIf="!(i === items.length -1)" [routerLink]="item.link">{{item.text}}</a>
+      </li>
+  </ol>
+</nav>
+
+
