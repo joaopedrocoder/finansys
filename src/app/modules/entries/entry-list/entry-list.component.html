@@ -28,7 +28,7 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let entry of entries">
+          <tr *ngFor="let entry of resources">
               <td>
                   <strong>{{entry?.name}}</strong><br>
                   <small>{{entry?.date}}</small><br>
@@ -50,7 +50,7 @@
                   </button>
                   <button 
                       class="btn btn-outline-danger btn-sm"
-                      (click)="deleteEntry(entry?.id)"
+                      (click)="deleteResource(entry?.id)"
                   >
                       remover
                   </button>

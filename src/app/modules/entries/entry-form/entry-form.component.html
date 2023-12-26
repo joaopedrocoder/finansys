@@ -19,7 +19,7 @@
     </button>
   </div>
 </div>
-<form [formGroup]="entryForm" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">Informações sobre o lançamento</div>
 
@@ -48,14 +48,14 @@
           <div
             class="text-danger"
             *ngIf="
-              entryForm.get('name')?.invalid &&
-              entryForm.get('name')?.touched
+              resourceForm.get('name')?.invalid &&
+              resourceForm.get('name')?.touched
             "
           >
-            <div *ngIf="entryForm.get('name')?.errors?.['required']">
+            <div *ngIf="resourceForm.get('name')?.errors?.['required']">
               <small>Dado obrigatório!</small>
             </div>
-            <div *ngIf="entryForm.get('name')?.errors?.['minLength']">
+            <div *ngIf="resourceForm.get('name')?.errors?.['minLength']">
               <small>Deve ter no min 2 caracteres</small>
             </div>
           </div>
@@ -76,11 +76,11 @@
           <div
             class="text-danger"
             *ngIf="
-              entryForm.get('amount')?.invalid &&
-              entryForm.get('amount')?.touched
+              resourceForm.get('amount')?.invalid &&
+              resourceForm.get('amount')?.touched
             "
           >
-            <div *ngIf="entryForm.get('amount')?.errors?.['required']">
+            <div *ngIf="resourceForm.get('amount')?.errors?.['required']">
               <small>Dado obrigatório!</small>
             </div>
           </div>
@@ -100,11 +100,11 @@
           <div
             class="text-danger"
             *ngIf="
-              entryForm.get('date')?.invalid &&
-              entryForm.get('date')?.touched
+              resourceForm.get('date')?.invalid &&
+              resourceForm.get('date')?.touched
             "
           >
-            <div *ngIf="entryForm.get('date')?.errors?.['required']">
+            <div *ngIf="resourceForm.get('date')?.errors?.['required']">
               <small>Dado obrigatório!</small>
             </div>
           </div>
@@ -154,11 +154,11 @@
           <div
             class="text-danger"
             *ngIf="
-              entryForm.get('categoryId')?.invalid &&
-              entryForm.get('categoryId')?.touched
+              resourceForm.get('categoryId')?.invalid &&
+              resourceForm.get('categoryId')?.touched
             "
           >
-            <div *ngIf="entryForm.get('categoryId')?.errors?.['required']">
+            <div *ngIf="resourceForm.get('categoryId')?.errors?.['required']">
               <small>Dado obrigatório!</small>
             </div>
           </div>
@@ -186,7 +186,7 @@
   <button
     type="submit"
     class="btn btn-primary btn-md float-end mt-3"
-    [disabled]="submittingForm || entryForm.invalid"
+    [disabled]="submittingForm || resourceForm.invalid"
   >
     Salvar
   </button>
