@@ -1,5 +1,5 @@
 
-import { map } from 'rxjs';
+// import { map } from 'rxjs';
 import { BaseResource } from '../../models/base-resource.model';
 import { Directive } from '@angular/core';
 import { BaseResourceService } from '../../services/base-resource.service';
@@ -11,7 +11,7 @@ export abstract class BaseResourceListComponent<T extends BaseResource> {
   constructor(private resourceService: BaseResourceService<T>) {}
 
   ngOnInit(): void {
-    this.listEntries()
+    this.listResources()
   }
 
   // sortResource(a: any, b: any) {
@@ -20,7 +20,7 @@ export abstract class BaseResourceListComponent<T extends BaseResource> {
   //   return nameA.localeCompare(nameB);
   // }
   
-  listEntries() {
+  listResources() {
     this.resourceService.getAll()
       // .pipe(
       //   map(resource => resource.sort(this.sortResource))
@@ -30,7 +30,7 @@ export abstract class BaseResourceListComponent<T extends BaseResource> {
         error: (err) => console.log(err),
       });
   }
-  deleteEntry(id?: number): void {
+  deleteResource(id?: number): void {
     const mustDelete = confirm('Deseja realmente excluir este item?');
 
     if (mustDelete && id)
