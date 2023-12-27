@@ -1,13 +1,11 @@
 <app-bread-crumb [items]="[{text: 'categories', link: '/categories'}]"></app-bread-crumb>
+<app-page-header 
+  [page-title]="'Categorias'"
+  [button-class]="'btn btn-success'"
+  [button-text]="'+ Nova Categoria'"
+  [button-link]="'new'"
+></app-page-header>
 
-<div class="row justify-content-between mb-4">
-    <div class="col-md">
-        <h1 class="h2 border-start border-3 ps-2">Categorias</h1>
-    </div>
-    <div class="col-md">
-        <button routerLink="new" class="btn btn-success btn-sm float-end">+ Nova Categoria</button>
-    </div>
-</div>
 <div class="table-responsive">
     <table class="table table-striped align-middle" aria-describedby="category table">
         <thead class="table-primary">
