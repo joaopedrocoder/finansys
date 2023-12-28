@@ -16,7 +16,8 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
   exports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FormFieldErrorComponent
   ]
 })
 export class SharedModule { }

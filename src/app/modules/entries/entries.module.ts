@@ -21,7 +21,7 @@ import { CoreModule } from '../../core/core.module';
     IMaskModule,
     CalendarModule,
     SharedModule,
-    CoreModule
+    CoreModule,
   ]
 })
 export class EntriesModule { }

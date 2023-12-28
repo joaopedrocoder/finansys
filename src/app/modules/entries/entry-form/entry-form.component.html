@@ -42,7 +42,7 @@
             <div *ngIf="resourceForm.get('name')?.errors?.['required']">
               <small>Dado obrigatório!</small>
             </div>
-            <div *ngIf="resourceForm.get('name')?.errors?.['minLength']">
+            <div *ngIf="resourceForm.get('name')?.errors?.['minlength']">
               <small>Deve ter no min 2 caracteres</small>
             </div>
           </div>
