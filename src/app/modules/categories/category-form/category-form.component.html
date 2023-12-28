@@ -1,14 +1,10 @@
 <app-bread-crumb [items]="[{text: 'categories', link: '/categories'}, {text: pageTitle}]"></app-bread-crumb>
-<div class="row justify-content-between mb-4">
-  <div class="col-md">
-    <h1 class="h2 border-start border-3 ps-2">{{pageTitle}}</h1>
-  </div>
-  <div class="col-md">
-    <button routerLink="/categories" class="btn btn-success btn-sm float-end">
-      << Voltar
-    </button>
-  </div>
-</div>
+<app-page-header 
+  [page-title]="pageTitle"
+  [button-class]="'btn btn-success'"
+  [button-text]="'<< Voltar'"
+  [button-link]="'/categories'"
+></app-page-header>
 <form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">Informações sobre a categoria</div>

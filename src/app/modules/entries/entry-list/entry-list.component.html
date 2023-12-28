@@ -1,12 +1,10 @@
 <app-bread-crumb [items]="[{text: 'Lançamentos', link: '/entries'}]"></app-bread-crumb>
-<div class="row justify-content-between mb-4">
-  <div class="col-md">
-      <h1 class="h2 border-start border-3 ps-2">Lançamentos</h1>
-  </div>
-  <div class="col-md">
-      <button routerLink="new" class="btn btn-success btn-sm float-end">+ Novo lançamento</button>
-  </div>
-</div>
+<app-page-header 
+  [page-title]="'Lançamentos'"
+  [button-class]="'btn btn-success'"
+  [button-text]="'+ Novo lançamento'"
+  [button-link]="'new'"
+></app-page-header>
 <div class="table-responsive">
   <table class="table table-striped align-middle" aria-describedby="category table">
       <thead class="table-primary">

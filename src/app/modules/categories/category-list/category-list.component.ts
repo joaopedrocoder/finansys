@@ -14,26 +14,5 @@ export class CategoryListComponent extends BaseResourceListComponent<Category>{
     private categoryService: CategoryService
   ) {
     super(categoryService)
-  }
-
-  // listCategories() {
-  //   this.categoryService.getAll().subscribe({
-  //     next: (response) => (this.categories = response),
-  //     error: (err) => console.log(err),
-  //   });
-  // }
-
-  // deleteCategory(id?: number): void {
-  //   const mustDelete = confirm('Deseja realmente excluir este item?');
-
-  //   if (mustDelete && id)
-  //     this.categoryService.delete(id).subscribe({
-  //       next: (response) =>
-  //         (this.categories = this.categories.filter(
-  //           (category) => category.id !== id
-  //         )),
-  //       error: (err) => console.log(err),
-  //     });
-  // }
-  
+  }  
 }
