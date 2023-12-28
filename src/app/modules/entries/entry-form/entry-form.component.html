@@ -163,12 +163,7 @@
       </div>
     </div>
   </div>
-  <div class="alert alert-danger mt-4" *ngIf="serverErrorMessage.length > 0">
-    <strong>Erro no servidor</strong>
-    <ul>
-      <li *ngFor="let error of serverErrorMessage">{{error}}</li>
-    </ul>
-  </div>
+  <app-server-error-messages [server-erroe-messages]="serverErrorMessage"></app-server-error-messages>
 
   <button
     type="submit"
