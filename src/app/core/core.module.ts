@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
 @NgModule({
   declarations: [
     BreadCrumbComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
   exports: [
     RouterModule,
     BreadCrumbComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    NavbarComponent
   ]
 })
 export class CoreModule { }

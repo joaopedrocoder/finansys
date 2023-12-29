@@ -1,0 +1,96 @@
+<app-bread-crumb [items]="[{text: 'Relatório de Receitas e Despesas'}]"></app-bread-crumb>
+
+<app-page-header
+  [page-title]="'Relatório de Receitas e Despesas'"
+  [show-button]="false"
+></app-page-header>
+
+<div class="card">
+  <div class="card-header">
+    Selecione o mês e o ano para gerar o relatório
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="month" class="form-label">Mês</label>
+        <select #month name="month" id="month" class="form-select">
+          <option value="" disabled selected>Selecione o mês</option>
+          <option value="1">Janeiro</option>
+          <option value="2">Fevereiro</option>
+          <option value="3">Março</option>
+          <option value="4">Abril</option>
+          <option value="5">Maio</option>
+          <option value="6">Junho</option>
+          <option value="7">Julho</option>
+          <option value="8">Agosto</option>
+          <option value="9">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="year" class="form-label">Ano</label>
+        <select #year name="year" id="year" class="form-select">
+          <option value="" disabled selected>Selecione o ano</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md ">
+        <button type="button" (click)="generatereports()" class="btn btn-primary float-end">Gerar Relatórios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mt-5 mb-5">
+  <div class="col">
+    <div class="card text-white bg-success mb-3 text-center">
+      <div class="card-header">Total de Receitas</div>
+      <div class="card-body">
+        <h5 class="card-title">+1500</h5>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col">
+    <div class="card text-white bg-danger mb-3 text-center">
+      <div class="card-header">Total de Dispesas</div>
+      <div class="card-body">
+        <h5 class="card-title">-500</h5>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col">
+    <div class="card text-white bg-info mb-3 text-center">
+      <div class="card-header">Saldo</div>
+      <div class="card-body">
+        <h5 class="card-title">1000</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="row mt-5 mb-4">
+  <div class="col-md-6">
+    GRÁFICO DE RECEITAS
+  </div>
+  <div class="col-md-6">
+    GRÁFICO DE DESPESAS
+  </div>
+</div>

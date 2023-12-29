@@ -2,7 +2,7 @@
   <div class="col-md">
     <h1 class="h2 border-start border-3 ps-2">{{pageTitle}}</h1>
   </div>
-  <div class="col-md">
+  <div class="col-md" *ngIf="showButton">
     <button [routerLink]="buttonLink" class="btn btn-success btn-sm float-end" [ngClass]="buttonClass">
       {{buttonText}}
     </button>

@@ -6,8 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './page-header.component.scss'
 })
 export class PageHeaderComponent {
-  @Input('page-title') pageTitle: string = ''
-  @Input('button-class') buttonClass: string = ''
-  @Input('button-text') buttonText: string = ''
-  @Input('button-link') buttonLink: string = ''
+  @Input('page-title') pageTitle = ''
+  @Input('button-class') buttonClass = ''
+  @Input('button-text') buttonText = ''
+  @Input('button-link') buttonLink = ''
+  @Input('show-button') showButton = true
 }
